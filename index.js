@@ -2,10 +2,17 @@ const express = require("express");
 const app = express();
 const port = 8000;
 require("dotenv").config();
-
-const db = require("./config/mongoose");
+const cors = require("cors");
+const bodyParser = require('body-parser')
+require("./config/mongoose");
 const dataRoutes = require("./routes/dataRoutes");
 
+var corsOptions = {
+  origin: "*"
+};
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json())
 app.use("/", dataRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");

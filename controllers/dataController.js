@@ -6,7 +6,7 @@ const dataArr = [];
 
 exports.extractData = async (_, res) => {
   try {
-    const rootUrl = "https://www.companydetails.in";
+    const baseUrl = "https://www.companydetails.in";
     const visitedUrls = new Set();
 
     // function to fetch HTML from the URL passed
@@ -68,7 +68,7 @@ exports.extractData = async (_, res) => {
     let checkNum = 0;
     // Recursive function to crawl the website
     const crawl = async (url) => {
-      const html = await fetchHTML(rootUrl + url);
+      const html = await fetchHTML(baseUrl + url);
       if (!html) {
         console.log("Failed to fetch HTML form ", url);
         return;
@@ -76,7 +76,6 @@ exports.extractData = async (_, res) => {
 
       if (url !== "/latest-registered-company-mca") {
         const data = extractData(html);
-        console.log(data);
         dataArr.push(data);
       }
 
