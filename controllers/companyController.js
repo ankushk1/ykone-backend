@@ -11,6 +11,7 @@ exports.createClient = async (req, res) => {
   }
 };
 
+// Get all clients, Can also pass filters in query params from request
 exports.getClients = async (req, res) => {
   try {
     const queryParams = req.query;
@@ -24,6 +25,7 @@ exports.getClients = async (req, res) => {
   }
 };
 
+//Get the client by ID
 exports.getClientByID = async (req, res) => {
   try {
     const client = await Client.findById(req.params.id);
@@ -36,6 +38,7 @@ exports.getClientByID = async (req, res) => {
   }
 };
 
+//Update a Client
 exports.updateClient = async (req, res) => {
   try {
     const client = await Client.findByIdAndUpdate(req.params.id, req.body);
@@ -48,6 +51,7 @@ exports.updateClient = async (req, res) => {
   }
 };
 
+// Delete a client
 exports.deleteClient = async (req, res) => {
   try {
     const client = await Client.findByIdAndDelete(req.params.id);

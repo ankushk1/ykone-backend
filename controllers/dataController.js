@@ -4,6 +4,8 @@ const { formatField } = require("../utils/utils");
 const Client = require("../models/Client");
 const dataArr = [];
 
+
+// Api to extract data from the given URL
 exports.extractData = async (_, res) => {
   try {
     const baseUrl = "https://www.companydetails.in";
